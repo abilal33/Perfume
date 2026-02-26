@@ -8,7 +8,7 @@ import { ShoppingBag, Search, Menu, ArrowRight, Instagram, Twitter, Facebook, St
 import { useState, useRef } from "react";
 
 const FragranceCard = ({ name, price, category, image, delay }: { name: string, price: string, category: string, image: string, delay: number, key?: string }) => (
-  <motion.div 
+  <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, delay }}
@@ -16,9 +16,9 @@ const FragranceCard = ({ name, price, category, image, delay }: { name: string, 
     className="group relative"
   >
     <div className="aspect-[3/4] overflow-hidden bg-zinc-100 rounded-2xl relative">
-      <img 
-        src={image} 
-        alt={name} 
+      <img
+        src={image}
+        alt={name}
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         referrerPolicy="no-referrer"
       />
@@ -77,7 +77,7 @@ export default function App() {
             <a href="#" className="hover:text-secondary transition-colors">About</a>
           </div>
         </div>
-        
+
         <a href="/" className="absolute left-1/2 -translate-x-1/2 text-2xl font-serif italic tracking-tighter">
           L'Essence
         </a>
@@ -92,7 +92,7 @@ export default function App() {
       </nav>
 
       {/* Mobile Menu Overlay */}
-      <div 
+      <div
         className={`fixed inset-0 bg-zinc-950 z-40 transition-transform duration-500 ease-in-out ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
         <div className="flex flex-col items-center justify-center h-full gap-8 text-white font-serif text-3xl">
@@ -105,13 +105,13 @@ export default function App() {
 
       {/* Hero Section */}
       <section ref={targetRef} className="relative h-screen flex items-center justify-center overflow-hidden bg-zinc-950">
-        <motion.div 
+        <motion.div
           style={{ opacity, scale, y }}
           className="absolute inset-0 z-0"
         >
-          <img 
-            src="https://picsum.photos/seed/perfumehero/1920/1080?blur=2" 
-            alt="Hero" 
+          <img
+            src="https://picsum.photos/seed/perfumehero/1920/1080?blur=2"
+            alt="Hero"
             className="w-full h-full object-cover opacity-60"
             referrerPolicy="no-referrer"
           />
@@ -119,7 +119,7 @@ export default function App() {
         </motion.div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl">
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -127,14 +127,14 @@ export default function App() {
           >
             The Art of Fragrance
           </motion.p>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
             className="text-white font-serif text-6xl md:text-9xl leading-[0.9] mb-8"
           >
-            Elegance <br />
-            <span className="italic text-stroke">Defined</span>
+            Allure <br />
+            <span className="italic text-secondary">Defined</span>
           </motion.h1>
           <motion.div
             initial={{ opacity: 0 }}
@@ -151,7 +151,7 @@ export default function App() {
           </motion.div>
         </div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.5 }}
@@ -182,13 +182,13 @@ export default function App() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {fragrances.map((f, i) => (
-              <FragranceCard 
-                key={f.name} 
+              <FragranceCard
+                key={f.name}
                 name={f.name}
                 price={f.price}
                 category={f.category}
                 image={f.image}
-                delay={i * 0.1} 
+                delay={i * 0.1}
               />
             ))}
           </div>
@@ -199,7 +199,7 @@ export default function App() {
       <section className="py-32 bg-zinc-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
@@ -207,9 +207,9 @@ export default function App() {
               className="relative"
             >
               <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-                <img 
-                  src="https://picsum.photos/seed/craft/800/1000" 
-                  alt="Craftsmanship" 
+                <img
+                  src="https://picsum.photos/seed/craft/800/1000"
+                  alt="Craftsmanship"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
@@ -271,9 +271,9 @@ export default function App() {
               Subscribe to receive exclusive access to new launches, private events, and the art of scent.
             </p>
             <form className="flex flex-col md:flex-row gap-4 max-w-xl mx-auto">
-              <input 
-                type="email" 
-                placeholder="Your email address" 
+              <input
+                type="email"
+                placeholder="Your email address"
                 className="flex-1 px-8 py-4 bg-white/10 border border-white/20 rounded-full text-white placeholder:text-white/40 focus:outline-none focus:bg-white/20 transition-all"
               />
               <button className="px-10 py-4 bg-secondary text-zinc-900 rounded-full font-display uppercase tracking-widest text-sm font-bold hover:scale-105 transition-transform">
@@ -296,7 +296,7 @@ export default function App() {
                 Crafting timeless fragrances for those who seek the extraordinary. Elevating the everyday through the power of scent.
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-display uppercase tracking-widest text-xs mb-8 text-secondary">Shop</h4>
               <ul className="space-y-4 text-zinc-400 text-sm">
