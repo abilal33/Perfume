@@ -133,7 +133,7 @@ export default function App() {
             transition={{ duration: 1, delay: 0.4 }}
             className="text-white font-serif text-6xl md:text-9xl leading-[0.9] mb-8"
           >
-            Allure <br />
+            Elegance <br />
             <span className="italic text-secondary">Defined</span>
           </motion.h1>
           <motion.div
