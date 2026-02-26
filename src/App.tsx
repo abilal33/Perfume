@@ -110,8 +110,8 @@ export default function App() {
           className="absolute inset-0 z-0"
         >
           <img
-            src="https://picsum.photos/seed/perfumehero/1920/1080?blur=2"
-            alt="Hero"
+            src="/hero-perfume-back.jpg"
+            alt="Hero Background"
             className="w-full h-full object-cover opacity-60"
             referrerPolicy="no-referrer"
           />
