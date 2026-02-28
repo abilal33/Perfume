@@ -1,15 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", serif;
-  --font-display: "Space Grotesk", sans-serif;
   
-  --color-primary: #9054de;
-  --color-secondary: #A2DE54;
-  --color-accent: #ffffff;
-
   --color-hazy-blue-50: #f0f7ff;
   --color-hazy-blue-100: #e0effe;
   --color-hazy-blue-200: #bae0fd;
@@ -25,17 +20,12 @@
 
 @layer base {
   body {
-    @apply bg-white text-zinc-900 antialiased;
+    @apply bg-hazy-blue-50 text-hazy-blue-950 antialiased selection:bg-hazy-blue-200;
   }
 }
 
 .glass {
   @apply bg-white/10 backdrop-blur-md border border-white/20;
-}
-
-.text-stroke {
-  -webkit-text-stroke: 1px currentColor;
-  color: transparent;
 }
 
 .hazy-gradient {
