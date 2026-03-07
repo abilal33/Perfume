@@ -295,50 +295,58 @@ export default function Home2() {
             <h2 className="text-4xl font-serif mb-2">Shop by famous perfumes</h2>
             <p className="text-hazy-blue-300">Curated selections from world-renowned houses</p>
           </motion.div>
-          <div className="flex gap-4">
-            <button onClick={scrollLeft} className="p-3 border border-white/20 rounded-full hover:bg-white/10 hover:border-white transition-all cursor-pointer">
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            <button onClick={scrollRight} className="p-3 border border-white/20 rounded-full hover:bg-white/10 hover:border-white transition-all cursor-pointer">
-              <ChevronRight className="w-6 h-6" />
-            </button>
-          </div>
         </div>
 
-        <div ref={sliderRef} className="flex gap-8 px-6 md:px-20 overflow-x-auto no-scrollbar pb-8 scroll-smooth snap-x">
-          {famousPerfumes.map((perfume) => (
-            <motion.div
-              key={perfume.id}
-              whileHover={{ scale: 1.02 }}
-              className="min-w-[300px] bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10 hover:border-white/30 transition-all cursor-pointer snap-start relative group"
-            >
-              <div className="aspect-square rounded-2xl overflow-hidden mb-6 bg-hazy-blue-900/50 relative">
-                <img
-                  src={perfume.image}
-                  alt={perfume.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-hazy-blue-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                  <button className="w-full py-3 bg-white text-hazy-blue-950 rounded-xl font-medium font-sans">
-                    View Details
+        <div className="relative group/slider">
+          <button
+            onClick={scrollLeft}
+            className="absolute left-2 md:left-6 top-[40%] -translate-y-1/2 z-10 p-4 bg-hazy-blue-950/80 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-white hover:text-hazy-blue-950 transition-all cursor-pointer shadow-2xl opacity-0 group-hover/slider:opacity-100"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          <button
+            onClick={scrollRight}
+            className="absolute right-2 md:right-6 top-[40%] -translate-y-1/2 z-10 p-4 bg-hazy-blue-950/80 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-white hover:text-hazy-blue-950 transition-all cursor-pointer shadow-2xl opacity-0 group-hover/slider:opacity-100"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
+          <div ref={sliderRef} className="flex gap-8 px-6 md:px-20 overflow-x-auto no-scrollbar pb-8 scroll-smooth snap-x">
+            {famousPerfumes.map((perfume) => (
+              <motion.div
+                key={perfume.id}
+                whileHover={{ scale: 1.02 }}
+                className="min-w-[300px] bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10 hover:border-white/30 transition-all cursor-pointer snap-start relative group"
+              >
+                <div className="aspect-square rounded-2xl overflow-hidden mb-6 bg-hazy-blue-900/50 relative">
+                  <img
+                    src={perfume.image}
+                    alt={perfume.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-hazy-blue-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                    <button className="w-full py-3 bg-white text-hazy-blue-950 rounded-xl font-medium font-sans">
+                      View Details
+                    </button>
+                  </div>
+                </div>
+                <p className="font-display text-xs uppercase tracking-widest text-hazy-blue-400 mb-2">{perfume.brand}</p>
+                <h3 className="text-2xl font-serif mb-2 text-white">{perfume.name}</h3>
+                <p className="text-sm text-hazy-blue-300/80 mb-6 italic leading-relaxed">
+                  {perfume.notes}
+                </p>
+                <div className="flex items-center justify-between mt-auto">
+                  <span className="font-serif text-xl border-b border-hazy-blue-400/30 text-hazy-blue-50 pb-1">{perfume.price}</span>
+                  <button className="text-sm font-medium flex items-center gap-1 text-hazy-blue-300 hover:text-white transition-colors group/btn">
+                    Explore <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                   </button>
                 </div>
-              </div>
-              <p className="font-display text-xs uppercase tracking-widest text-hazy-blue-400 mb-2">{perfume.brand}</p>
-              <h3 className="text-2xl font-serif mb-2 text-white">{perfume.name}</h3>
-              <p className="text-sm text-hazy-blue-300/80 mb-6 italic leading-relaxed">
-                {perfume.notes}
-              </p>
-              <div className="flex items-center justify-between mt-auto">
-                <span className="font-serif text-xl border-b border-hazy-blue-400/30 text-hazy-blue-50 pb-1">{perfume.price}</span>
-                <button className="text-sm font-medium flex items-center gap-1 text-hazy-blue-300 hover:text-white transition-colors group/btn">
-                  Explore <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </button>
-              </div>
-              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none" />
-            </motion.div>
-          ))}
+                <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none" />
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

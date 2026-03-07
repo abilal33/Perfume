@@ -5,7 +5,7 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", serif;
   --font-display: "Space Grotesk", sans-serif;
-  
+
   --color-primary: #9054de;
   --color-secondary: #A2DE54;
   --color-accent: #ffffff;
@@ -44,4 +44,17 @@
 
 .hazy-glow {
   box-shadow: 0 0 40px rgba(186, 224, 253, 0.4);
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
