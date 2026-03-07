@@ -46,8 +46,8 @@ const FragranceCard = ({ name, price, category, image, delay }: { name: string, 
     </div>
     <div className="mt-4 flex justify-between items-start">
       <div>
-        <p className="text-xs uppercase tracking-widest text-hazy-blue-600 font-display mb-1">{category}</p>
-        <h3 className="font-serif text-xl group-hover:text-hazy-blue-600 transition-colors text-hazy-blue-950">{name}</h3>
+        <p className="text-xs uppercase tracking-widest text-secondary font-display mb-1">{category}</p>
+        <h3 className="font-serif text-xl group-hover:text-secondary transition-colors text-hazy-blue-950">{name}</h3>
       </div>
       <p className="font-display font-medium text-lg text-hazy-blue-950">{price}</p>
     </div>
@@ -136,17 +136,17 @@ export default function Home2() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between glass">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-hazy-blue-600 rounded-full flex items-center justify-center">
+          <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
             <Droplets className="text-white w-5 h-5" />
           </div>
           <span className="font-serif font-bold text-xl tracking-tight">Aura Mist</span>
         </div>
 
         <div className="hidden md:flex items-center gap-8 text-sm font-medium">
-          <a href="#" className="hover:text-hazy-blue-600 transition-colors">Collection</a>
-          <a href="#" className="hover:text-hazy-blue-600 transition-colors">New Arrivals</a>
-          <a href="#" className="hover:text-hazy-blue-600 transition-colors">Fragrance Finder</a>
-          <a href="#" className="hover:text-hazy-blue-600 transition-colors">About</a>
+          <a href="#" className="hover:text-secondary transition-colors">Collection</a>
+          <a href="#" className="hover:text-secondary transition-colors">New Arrivals</a>
+          <a href="#" className="hover:text-secondary transition-colors">Fragrance Finder</a>
+          <a href="#" className="hover:text-secondary transition-colors">About</a>
         </div>
 
         <div className="flex items-center gap-4">
@@ -155,7 +155,7 @@ export default function Home2() {
           </button>
           <button className="p-2 hover:bg-white/20 rounded-full transition-colors relative">
             <ShoppingBag className="w-5 h-5" />
-            <span className="absolute top-0 right-0 w-4 h-4 bg-hazy-blue-600 text-white text-[10px] flex items-center justify-center rounded-full">2</span>
+            <span className="absolute top-0 right-0 w-4 h-4 bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">2</span>
           </button>
           <button className="md:hidden p-2 hover:bg-white/20 rounded-full transition-colors">
             <Menu className="w-5 h-5" />
@@ -176,7 +176,7 @@ export default function Home2() {
             className="text-6xl md:text-8xl font-serif leading-tight mb-6"
           >
             Perfume 0123<br />
-            <span className="text-hazy-blue-600 italic">Azure Tobacco</span>
+            <span className="text-secondary italic">Azure Tobacco</span>
           </motion.h1>
 
           <motion.p
@@ -230,7 +230,7 @@ export default function Home2() {
           className="mb-12"
         >
           <h2 className="text-4xl font-serif mb-2">Best picks</h2>
-          <div className="w-20 h-1 bg-hazy-blue-600"></div>
+          <div className="w-20 h-1 bg-secondary"></div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -258,7 +258,7 @@ export default function Home2() {
                 </div>
               </div>
               <h3 className="font-serif text-xl mb-1">{perfume.name}</h3>
-              <p className="text-sm text-hazy-blue-600 font-medium mb-1">{perfume.brand}</p>
+              <p className="text-sm text-secondary font-medium mb-1">{perfume.brand}</p>
               <p className="font-medium">{perfume.price}</p>
             </motion.div>
           ))}
@@ -276,13 +276,13 @@ export default function Home2() {
           >
             <h2 className="text-4xl font-serif mb-4">
               Curated <br />
-              <span className="text-hazy-blue-600 italic">Masterpieces</span>
+              <span className="text-secondary italic">Masterpieces</span>
             </h2>
             <p className="text-hazy-blue-800/70 text-lg leading-relaxed">
               Discover our signature scents, meticulously crafted with the rarest ingredients from around the globe. Each bottle tells a unique story of passion and precision.
             </p>
           </motion.div>
-          <button className="group flex items-center gap-2 text-hazy-blue-950 font-display uppercase tracking-widest text-sm border-b border-hazy-blue-200 pb-2 hover:border-hazy-blue-600 transition-colors">
+          <button className="group flex items-center gap-2 text-hazy-blue-950 font-display uppercase tracking-widest text-sm border-b border-hazy-blue-200 pb-2 hover:border-secondary transition-colors">
             View All Products <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
@@ -472,7 +472,7 @@ export default function Home2() {
       {/* Shop by Gender */}
       <section className="py-24 px-6 md:px-20 bg-white">
         <div className="mb-12">
-          <h2 className="text-4xl font-serif mb-2 uppercase tracking-widest">Shop by <span className="text-hazy-blue-600">Gender</span></h2>
+          <h2 className="text-4xl font-serif mb-2 uppercase tracking-widest">Shop by <span className="text-secondary">Gender</span></h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-[600px]">
@@ -522,7 +522,7 @@ export default function Home2() {
                 placeholder="Your email address"
                 className="flex-1 px-8 py-4 bg-white/10 border border-white/20 rounded-full text-white placeholder:text-white/40 focus:outline-none focus:bg-white/20 transition-all"
               />
-              <button className="px-10 py-4 bg-hazy-blue-600 text-white rounded-full font-display uppercase tracking-widest text-sm font-bold hover:scale-105 transition-transform">
+              <button className="px-10 py-4 bg-secondary text-white rounded-full font-display uppercase tracking-widest text-sm font-bold hover:scale-105 transition-transform">
                 Subscribe
               </button>
             </form>
@@ -535,7 +535,7 @@ export default function Home2() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 bg-hazy-blue-600 rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
                 <Droplets className="text-white w-5 h-5" />
               </div>
               <span className="font-serif font-bold text-2xl tracking-tight">Aura Mist</span>
