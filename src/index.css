@@ -10,106 +10,17 @@
   --color-secondary: #A2DE54;
   --color-accent: #ffffff;
 
-  --color-brand-50: var(--brand-50);
-  --color-brand-100: var(--brand-100);
-  --color-brand-200: var(--brand-200);
-  --color-brand-300: var(--brand-300);
-  --color-brand-400: var(--brand-400);
-  --color-brand-500: var(--brand-500);
-  --color-brand-600: var(--brand-600);
-  --color-brand-700: var(--brand-700);
-  --color-brand-800: var(--brand-800);
-  --color-brand-900: var(--brand-900);
-  --color-brand-950: var(--brand-950);
-}
-
-@layer base {
-
-  :root,
-  [data-theme="aura"] {
-    --brand-50: #f0f7ff;
-    --brand-100: #e0effe;
-    --brand-200: #bae0fd;
-    --brand-300: #7cc7fb;
-    --brand-400: #38a9f8;
-    --brand-500: #0e8de9;
-    --brand-600: #026fc7;
-    --brand-700: #0358a1;
-    --brand-800: #074b85;
-    --brand-900: #0c406e;
-    --brand-950: #082949;
-  }
-
-  /* 1. Midnight & Rose Gold */
-  [data-theme="midnight"] {
-    --brand-50: #fff1f2;
-    /* rose-50 */
-    --brand-100: #ffe4e6;
-    --brand-200: #fecdd3;
-    --brand-300: #fda4af;
-    --brand-400: #fb7185;
-    --brand-500: #f43f5e;
-    --brand-600: #e11d48;
-    --brand-700: #be123c;
-    --brand-800: #18181b;
-    /* zinc-900 */
-    --brand-900: #09090b;
-    /* zinc-950 */
-    --brand-950: #000000;
-    /* black */
-  }
-
-  /* 2. Emerald & Brass */
-  [data-theme="emerald"] {
-    --brand-50: #f0fdf4;
-    /* green-50 */
-    --brand-100: #dcfce7;
-    --brand-200: #fcd34d;
-    /* amber-300 brass accent */
-    --brand-300: #fbbf24;
-    --brand-400: #f59e0b;
-    --brand-500: #22c55e;
-    --brand-600: #16a34a;
-    --brand-700: #15803d;
-    --brand-800: #166534;
-    --brand-900: #14532d;
-    --brand-950: #052e16;
-    /* dark emerald */
-  }
-
-  /* 3. Warm Amber */
-  [data-theme="amber"] {
-    --brand-50: #fffbeb;
-    /* amber-50 */
-    --brand-100: #fef3c7;
-    --brand-200: #fde68a;
-    --brand-300: #fcd34d;
-    --brand-400: #fbbf24;
-    --brand-500: #f59e0b;
-    --brand-600: #d97706;
-    --brand-700: #b45309;
-    --brand-800: #92400e;
-    --brand-900: #78350f;
-    --brand-950: #451a03;
-    /* dark woody */
-  }
-
-  /* 4. Monochrome Noir */
-  [data-theme="noir"] {
-    --brand-50: #ffffff;
-    /* white */
-    --brand-100: #f4f4f5;
-    /* zinc-100 */
-    --brand-200: #e4e4e7;
-    --brand-300: #d4d4d8;
-    --brand-400: #a1a1aa;
-    --brand-500: #71717a;
-    --brand-600: #52525b;
-    --brand-700: #3f3f46;
-    --brand-800: #27272a;
-    --brand-900: #18181b;
-    --brand-950: #09090b;
-  }
+  --color-hazy-blue-50: #f0f7ff;
+  --color-hazy-blue-100: #e0effe;
+  --color-hazy-blue-200: #bae0fd;
+  --color-hazy-blue-300: #7cc7fb;
+  --color-hazy-blue-400: #38a9f8;
+  --color-hazy-blue-500: #0e8de9;
+  --color-hazy-blue-600: #026fc7;
+  --color-hazy-blue-700: #0358a1;
+  --color-hazy-blue-800: #074b85;
+  --color-hazy-blue-900: #0c406e;
+  --color-hazy-blue-950: #082949;
 }
 
 @layer base {
@@ -128,11 +39,11 @@
 }
 
 .hazy-gradient {
-  background: radial-gradient(circle at 50% 50%, var(--color-brand-100) 0%, var(--color-brand-200) 100%);
+  background: radial-gradient(circle at 50% 50%, var(--color-hazy-blue-100) 0%, var(--color-hazy-blue-200) 100%);
 }
 
 .hazy-glow {
-  box-shadow: 0 0 40px var(--color-brand-200);
+  box-shadow: 0 0 40px rgba(186, 224, 253, 0.4);
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
