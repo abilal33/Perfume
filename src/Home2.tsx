@@ -286,59 +286,69 @@ export default function Home2() {
 
       {/* Shop by Famous Perfumes */}
       <section className="py-24 bg-hazy-blue-950 text-white overflow-hidden">
-        <div className="px-6 md:px-20 mb-12 flex items-end justify-between">
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-serif mb-2">Shop by famous perfumes</h2>
-            <p className="text-hazy-blue-300">Curated selections from world-renowned houses</p>
-          </motion.div>
-          <div className="flex gap-4">
-            <button onClick={scrollLeft} className="p-3 border border-white/20 rounded-full hover:bg-white/10 hover:border-white transition-all cursor-pointer">
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            <button onClick={scrollRight} className="p-3 border border-white/20 rounded-full hover:bg-white/10 hover:border-white transition-all cursor-pointer">
-              <ChevronRight className="w-6 h-6" />
-            </button>
-          </div>
-        </div>
-
-        <div ref={sliderRef} className="flex gap-8 px-6 md:px-20 overflow-x-auto no-scrollbar pb-8 scroll-smooth snap-x">
-          {famousPerfumes.map((perfume) => (
+        <div className="max-w-7xl mx-auto">
+          <div className="px-6 md:px-20 mb-12 flex items-end justify-between">
             <motion.div
-              key={perfume.id}
-              whileHover={{ scale: 1.02 }}
-              className="min-w-[300px] bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10 hover:border-white/30 transition-all cursor-pointer snap-start relative group"
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
             >
-              <div className="aspect-square rounded-2xl overflow-hidden mb-6 bg-hazy-blue-900/50 relative">
-                <img
-                  src={perfume.image}
-                  alt={perfume.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-hazy-blue-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                  <button className="w-full py-3 bg-white text-hazy-blue-950 rounded-xl font-medium font-sans">
-                    View Details
-                  </button>
-                </div>
-              </div>
-              <p className="font-display text-xs uppercase tracking-widest text-hazy-blue-400 mb-2">{perfume.brand}</p>
-              <h3 className="text-2xl font-serif mb-2 text-white">{perfume.name}</h3>
-              <p className="text-sm text-hazy-blue-300/80 mb-6 italic leading-relaxed">
-                {perfume.notes}
-              </p>
-              <div className="flex items-center justify-between mt-auto">
-                <span className="font-serif text-xl border-b border-hazy-blue-400/30 text-hazy-blue-50 pb-1">{perfume.price}</span>
-                <button className="text-sm font-medium flex items-center gap-1 text-hazy-blue-300 hover:text-white transition-colors group/btn">
-                  Explore <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </button>
-              </div>
-              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none" />
+              <h2 className="text-4xl font-serif mb-2">Shop by famous perfumes</h2>
+              <p className="text-hazy-blue-300">Curated selections from world-renowned houses</p>
             </motion.div>
-          ))}
+            <div className="flex gap-4">
+              <button onClick={scrollLeft} className="p-3 border border-white/20 rounded-full hover:bg-white/10 hover:border-white transition-all cursor-pointer">
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <button onClick={scrollRight} className="p-3 border border-white/20 rounded-full hover:bg-white/10 hover:border-white transition-all cursor-pointer">
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
+
+          <div className="mx-6 md:mx-20 bg-white/5 rounded-[40px] p-4 md:p-8 border border-white/10 backdrop-blur-md">
+            <div ref={sliderRef} className="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x">
+              {/* Space before first card */}
+              <div className="min-w-[4px] md:min-w-[10px] shrink-0" />
+
+              {famousPerfumes.map((perfume) => (
+                <motion.div
+                  key={perfume.id}
+                  whileHover={{ scale: 1.02 }}
+                  className="min-w-[260px] md:min-w-[280px] bg-white/10 backdrop-blur-sm rounded-3xl p-6 border border-white/10 hover:border-white/30 transition-all cursor-pointer snap-start relative group shrink-0 flex flex-col"
+                >
+                  <div className="aspect-square rounded-2xl overflow-hidden mb-6 bg-hazy-blue-900/50 relative shrink-0">
+                    <img
+                      src={perfume.image}
+                      alt={perfume.name}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-hazy-blue-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                      <button className="w-full py-3 bg-white text-hazy-blue-950 rounded-xl font-medium font-sans">
+                        View Details
+                      </button>
+                    </div>
+                  </div>
+                  <p className="font-display text-xs uppercase tracking-widest text-hazy-blue-400 mb-2 shrink-0">{perfume.brand}</p>
+                  <h3 className="text-2xl font-serif mb-2 text-white shrink-0">{perfume.name}</h3>
+                  <p className="text-sm text-hazy-blue-300/80 mb-6 italic leading-relaxed flex-1">
+                    {perfume.notes}
+                  </p>
+                  <div className="flex items-center justify-between mt-auto shrink-0 pt-4">
+                    <span className="font-serif text-xl border-b border-hazy-blue-400/30 text-hazy-blue-50 pb-1">{perfume.price}</span>
+                    <button className="text-sm font-medium flex items-center gap-1 text-hazy-blue-300 hover:text-white transition-colors group/btn">
+                      Explore <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                    </button>
+                  </div>
+                  <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none" />
+                </motion.div>
+              ))}
+
+              {/* Space after last card */}
+              <div className="min-w-[4px] md:min-w-[10px] shrink-0" />
+            </div>
+          </div>
         </div>
       </section>
 
