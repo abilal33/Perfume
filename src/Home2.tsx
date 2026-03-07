@@ -15,7 +15,7 @@ import {
   Heart,
   Star
 } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const FragranceCard = ({ name, price, category, image, delay }: { name: string, price: string, category: string, image: string, delay: number, key?: string }) => (
   <motion.div
@@ -93,6 +93,23 @@ const famousPerfumes = [
 export default function Home2() {
   const containerRef = useRef(null);
   const sliderRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScroll = () => {
+    if (sliderRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(Math.ceil(scrollLeft + clientWidth) < scrollWidth);
+    }
+  };
+
+  useEffect(() => {
+    // Initial check and resize listener
+    checkScroll();
+    window.addEventListener('resize', checkScroll);
+    return () => window.removeEventListener('resize', checkScroll);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -298,21 +315,29 @@ export default function Home2() {
         </div>
 
         <div className="relative group/slider">
-          <button
-            onClick={scrollLeft}
-            className="absolute left-2 md:left-6 top-[40%] -translate-y-1/2 z-10 p-4 bg-hazy-blue-950/80 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-white hover:text-hazy-blue-950 transition-all cursor-pointer shadow-2xl opacity-0 group-hover/slider:opacity-100"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
+          {canScrollLeft && (
+            <button
+              onClick={scrollLeft}
+              className="absolute left-2 md:left-6 top-[40%] -translate-y-1/2 z-10 p-4 bg-hazy-blue-950/80 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-white hover:text-hazy-blue-950 transition-all cursor-pointer shadow-2xl opacity-0 group-hover/slider:opacity-100"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+          )}
 
-          <button
-            onClick={scrollRight}
-            className="absolute right-2 md:right-6 top-[40%] -translate-y-1/2 z-10 p-4 bg-hazy-blue-950/80 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-white hover:text-hazy-blue-950 transition-all cursor-pointer shadow-2xl opacity-0 group-hover/slider:opacity-100"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
+          {canScrollRight && (
+            <button
+              onClick={scrollRight}
+              className="absolute right-2 md:right-6 top-[40%] -translate-y-1/2 z-10 p-4 bg-hazy-blue-950/80 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-white hover:text-hazy-blue-950 transition-all cursor-pointer shadow-2xl opacity-0 group-hover/slider:opacity-100"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          )}
 
-          <div ref={sliderRef} className="flex gap-8 px-6 md:px-20 overflow-x-auto no-scrollbar pb-8 scroll-smooth snap-x">
+          <div
+            ref={sliderRef}
+            onScroll={checkScroll}
+            className="flex gap-8 px-6 md:px-20 overflow-x-auto no-scrollbar pb-8 scroll-smooth snap-x"
+          >
             {famousPerfumes.map((perfume) => (
               <motion.div
                 key={perfume.id}
