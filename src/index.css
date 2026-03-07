@@ -10,17 +10,17 @@
   --color-secondary: #A2DE54;
   --color-accent: #ffffff;
 
-  --color-hazy-blue-50: #f0f7ff;
-  --color-hazy-blue-100: #e0effe;
-  --color-hazy-blue-200: #bae0fd;
-  --color-hazy-blue-300: #7cc7fb;
-  --color-hazy-blue-400: #38a9f8;
-  --color-hazy-blue-500: #0e8de9;
-  --color-hazy-blue-600: #026fc7;
-  --color-hazy-blue-700: #0358a1;
-  --color-hazy-blue-800: #074b85;
-  --color-hazy-blue-900: #0c406e;
-  --color-hazy-blue-950: #082949;
+  --color-hazy-blue-50: #eef9ff;
+  --color-hazy-blue-100: #d8f0ff;
+  --color-hazy-blue-200: #b8e4ff;
+  --color-hazy-blue-300: #8ad4ff;
+  --color-hazy-blue-400: #54beff;
+  --color-hazy-blue-500: #29a3ff;
+  --color-hazy-blue-600: #0984f8;
+  --color-hazy-blue-700: #006ae0;
+  --color-hazy-blue-800: #0452b3;
+  --color-hazy-blue-900: #0a458f;
+  --color-hazy-blue-950: #072a5e;
 }
 
 @layer base {
@@ -43,7 +43,7 @@
 }
 
 .hazy-glow {
-  box-shadow: 0 0 40px rgba(186, 224, 253, 0.4);
+  box-shadow: 0 0 40px rgba(84, 190, 255, 0.4);
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
