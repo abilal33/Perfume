@@ -82,8 +82,18 @@ const genders = [
   { id: "unisex", title: "UNISEX", sub: "Balanced, unique, and versatile", img: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&q=80&w=800" },
 ];
 
+const famousPerfumes = [
+  { id: 1, name: "Baccarat Rouge 540", brand: "Maison Francis Kurkdjian", price: "$325", notes: "Jasmine, Saffron, Cedarwood, Ambergris", image: "https://images.unsplash.com/photo-1616406432452-07bc5938753d?auto=format&fit=crop&q=80&w=800" },
+  { id: 2, name: "Aventus", brand: "Creed", price: "$495", notes: "Pineapple, Birch, Musk, Oak Moss", image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=800" },
+  { id: 3, name: "Santal 33", brand: "Le Labo", price: "$310", notes: "Sandalwood, Cardamom, Leather", image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=800" },
+  { id: 4, name: "Oud Wood", brand: "Tom Ford", price: "$295", notes: "Rare Oud, Sandalwood, Rose Wood", image: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=800" },
+  { id: 5, name: "Lost Cherry", brand: "Tom Ford", price: "$390", notes: "Black Cherry, Tonka Bean, Almond", image: "https://images.unsplash.com/photo-1557170334-a9632e77c6e4?auto=format&fit=crop&q=80&w=800" },
+];
+
 export default function Home2() {
   const containerRef = useRef(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
@@ -91,6 +101,18 @@ export default function Home2() {
 
   const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.9]);
+
+  const scrollLeft = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollBy({ left: -400, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollBy({ left: 400, behavior: 'smooth' });
+    }
+  };
 
   return (
     <div ref={containerRef} className="bg-hazy-blue-50 text-hazy-blue-950 antialiased selection:bg-hazy-blue-200 min-h-screen font-sans overflow-x-hidden">
@@ -274,38 +296,47 @@ export default function Home2() {
             <p className="text-hazy-blue-300">Curated selections from world-renowned houses</p>
           </motion.div>
           <div className="flex gap-4">
-            <button className="p-3 border border-white/20 rounded-full hover:bg-white/10 transition-colors">
+            <button onClick={scrollLeft} className="p-3 border border-white/20 rounded-full hover:bg-white/10 hover:border-white transition-all cursor-pointer">
               <ChevronLeft className="w-6 h-6" />
             </button>
-            <button className="p-3 border border-white/20 rounded-full hover:bg-white/10 transition-colors">
+            <button onClick={scrollRight} className="p-3 border border-white/20 rounded-full hover:bg-white/10 hover:border-white transition-all cursor-pointer">
               <ChevronRight className="w-6 h-6" />
             </button>
           </div>
         </div>
 
-        <div className="flex gap-8 px-6 md:px-20 overflow-x-auto no-scrollbar pb-8">
-          {[1, 2, 3, 4, 5].map((item) => (
+        <div ref={sliderRef} className="flex gap-8 px-6 md:px-20 overflow-x-auto no-scrollbar pb-8 scroll-smooth snap-x">
+          {famousPerfumes.map((perfume) => (
             <motion.div
-              key={item}
+              key={perfume.id}
               whileHover={{ scale: 1.02 }}
-              className="min-w-[300px] bg-white/5 rounded-3xl p-6 border border-white/10"
+              className="min-w-[300px] bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10 hover:border-white/30 transition-all cursor-pointer snap-start relative group"
             >
-              <div className="aspect-square rounded-2xl overflow-hidden mb-6 bg-white/5">
+              <div className="aspect-square rounded-2xl overflow-hidden mb-6 bg-hazy-blue-900/50 relative">
                 <img
-                  src={`https://images.unsplash.com/photo-1557170334-a9632e77c6e4?auto=format&fit=crop&q=80&w=800&sig=${item}`}
-                  alt="Famous Perfume"
-                  className="w-full h-full object-cover"
+                  src={perfume.image}
+                  alt={perfume.name}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-hazy-blue-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                  <button className="w-full py-3 bg-white text-hazy-blue-950 rounded-xl font-medium font-sans">
+                    View Details
+                  </button>
+                </div>
               </div>
-              <h3 className="text-xl font-serif mb-2">Signature No. {item}</h3>
-              <p className="text-sm text-hazy-blue-300 mb-4">A timeless classic with notes of bergamot and cedar.</p>
-              <div className="flex items-center justify-between">
-                <span className="font-bold">$180</span>
-                <button className="text-sm font-medium flex items-center gap-1 hover:text-hazy-blue-300 transition-colors">
-                  Details <ChevronRight className="w-4 h-4" />
+              <p className="font-display text-xs uppercase tracking-widest text-hazy-blue-400 mb-2">{perfume.brand}</p>
+              <h3 className="text-2xl font-serif mb-2 text-white">{perfume.name}</h3>
+              <p className="text-sm text-hazy-blue-300/80 mb-6 italic leading-relaxed">
+                {perfume.notes}
+              </p>
+              <div className="flex items-center justify-between mt-auto">
+                <span className="font-serif text-xl border-b border-hazy-blue-400/30 text-hazy-blue-50 pb-1">{perfume.price}</span>
+                <button className="text-sm font-medium flex items-center gap-1 text-hazy-blue-300 hover:text-white transition-colors group/btn">
+                  Explore <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                 </button>
               </div>
+              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none" />
             </motion.div>
           ))}
         </div>
