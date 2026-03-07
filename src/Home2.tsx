@@ -11,9 +11,55 @@ import {
   Flame,
   Flower2,
   Apple,
-  ArrowRight
+  ArrowRight,
+  Heart,
+  Star
 } from "lucide-react";
 import { useRef } from "react";
+
+const FragranceCard = ({ name, price, category, image, delay }: { name: string, price: string, category: string, image: string, delay: number, key?: string }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay }}
+    viewport={{ once: true }}
+    className="group relative"
+  >
+    <div className="aspect-[3/4] overflow-hidden bg-hazy-blue-50 rounded-2xl relative">
+      <img
+        src={image}
+        alt={name}
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        referrerPolicy="no-referrer"
+      />
+      <div className="absolute top-4 right-4">
+        <button className="p-2 rounded-full bg-white/80 backdrop-blur-sm text-hazy-blue-950 hover:bg-white transition-colors" aria-label={`Add ${name} to wishlist`}>
+          <Heart size={18} />
+        </button>
+      </div>
+      <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500 bg-gradient-to-t from-hazy-blue-950/60 to-transparent">
+        <button className="w-full py-3 bg-white text-hazy-blue-950 rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-hazy-blue-50 transition-colors">
+          <ShoppingBag size={18} />
+          Add to Bag
+        </button>
+      </div>
+    </div>
+    <div className="mt-4 flex justify-between items-start">
+      <div>
+        <p className="text-xs uppercase tracking-widest text-hazy-blue-600 font-display mb-1">{category}</p>
+        <h3 className="font-serif text-xl group-hover:text-hazy-blue-600 transition-colors text-hazy-blue-950">{name}</h3>
+      </div>
+      <p className="font-display font-medium text-lg text-hazy-blue-950">{price}</p>
+    </div>
+  </motion.div>
+);
+
+const fragrances = [
+  { name: "Midnight Bloom", price: "$185", category: "Floral", image: "https://picsum.photos/seed/perfume1/600/800" },
+  { name: "Velvet Oud", price: "$240", category: "Woody", image: "https://picsum.photos/seed/perfume2/600/800" },
+  { name: "Citrus Azure", price: "$160", category: "Fresh", image: "https://picsum.photos/seed/perfume3/600/800" },
+  { name: "Amber Silk", price: "$210", category: "Oriental", image: "https://picsum.photos/seed/perfume4/600/800" },
+];
 
 const perfumes = [
   { id: 1, name: "Azure Mist", brand: "Aura Luxe", price: "$120", image: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=800" },
@@ -180,6 +226,42 @@ export default function Home2() {
         </div>
       </section>
 
+      {/* Curated Masterpieces */}
+      <section className="py-24 px-6 md:px-20 bg-hazy-blue-50/50">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="max-w-2xl"
+          >
+            <h2 className="text-4xl font-serif mb-4">
+              Curated <br />
+              <span className="text-hazy-blue-600 italic">Masterpieces</span>
+            </h2>
+            <p className="text-hazy-blue-800/70 text-lg leading-relaxed">
+              Discover our signature scents, meticulously crafted with the rarest ingredients from around the globe. Each bottle tells a unique story of passion and precision.
+            </p>
+          </motion.div>
+          <button className="group flex items-center gap-2 text-hazy-blue-950 font-display uppercase tracking-widest text-sm border-b border-hazy-blue-200 pb-2 hover:border-hazy-blue-600 transition-colors">
+            View All Products <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {fragrances.map((f, i) => (
+            <FragranceCard
+              key={f.name}
+              name={f.name}
+              price={f.price}
+              category={f.category}
+              image={f.image}
+              delay={i * 0.1}
+            />
+          ))}
+        </div>
+      </section>
+
       {/* Shop by Famous Perfumes */}
       <section className="py-24 bg-hazy-blue-950 text-white overflow-hidden">
         <div className="px-6 md:px-20 mb-12 flex items-end justify-between">
@@ -263,6 +345,66 @@ export default function Home2() {
         </div>
       </section>
 
+      {/* Story Section */}
+      <section className="py-24 px-6 md:px-20 bg-hazy-blue-950 text-white overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+              <img
+                src="https://picsum.photos/seed/craft/800/1000"
+                alt="Craftsmanship"
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-hazy-blue-800 rounded-3xl -z-10 hidden md:block" />
+            <div className="absolute top-1/2 -right-20 translate-y-[-50%] p-8 bg-white/10 backdrop-blur-md rounded-2xl max-w-xs hidden lg:block border border-white/20">
+              <Star className="text-hazy-blue-300 mb-4" fill="currentColor" />
+              <p className="text-hazy-blue-100 text-sm italic font-serif leading-relaxed">
+                "The most intimate way to share a secret is through the scent you leave behind."
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-hazy-blue-400 font-display uppercase tracking-widest text-xs mb-6">Our Craftsmanship</p>
+            <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">
+              A Legacy of <br />
+              <span className="italic text-hazy-blue-300">Pure Essence</span>
+            </h2>
+            <div className="space-y-6 text-hazy-blue-200 text-lg leading-relaxed">
+              <p>
+                Since 1924, L'Essence has been at the forefront of high perfumery. We believe that a fragrance is more than just a scent—it's an invisible garment that defines your presence.
+              </p>
+              <p>
+                Our master perfumers spend years perfecting each blend, sourcing sustainable botanicals from the Grasse region of France to the misty mountains of India.
+              </p>
+            </div>
+            <div className="mt-12 grid grid-cols-2 gap-8">
+              <div>
+                <p className="text-3xl font-serif text-white mb-1">100%</p>
+                <p className="text-xs uppercase tracking-widest text-hazy-blue-400 font-display">Natural Ingredients</p>
+              </div>
+              <div>
+                <p className="text-3xl font-serif text-white mb-1">48h+</p>
+                <p className="text-xs uppercase tracking-widest text-hazy-blue-400 font-display">Long Lasting</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Shop by Gender */}
       <section className="py-24 px-6 md:px-20 bg-white">
         <div className="mb-12">
@@ -294,6 +436,33 @@ export default function Home2() {
               </div>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section className="py-32 px-6 bg-hazy-blue-950 text-white text-center border-t border-white/10">
+        <div className="max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-6xl font-serif mb-8">Join the Inner Circle</h2>
+            <p className="text-white/70 text-lg mb-12 font-display tracking-wide">
+              Subscribe to receive exclusive access to new launches, private events, and the art of scent.
+            </p>
+            <form className="flex flex-col md:flex-row gap-4 max-w-xl mx-auto">
+              <input
+                type="email"
+                placeholder="Your email address"
+                className="flex-1 px-8 py-4 bg-white/10 border border-white/20 rounded-full text-white placeholder:text-white/40 focus:outline-none focus:bg-white/20 transition-all"
+              />
+              <button className="px-10 py-4 bg-hazy-blue-600 text-white rounded-full font-display uppercase tracking-widest text-sm font-bold hover:scale-105 transition-transform">
+                Subscribe
+              </button>
+            </form>
+          </motion.div>
         </div>
       </section>
 
