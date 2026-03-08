@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ShoppingBag, Search, Menu, X, ArrowRight, ChevronLeft, ChevronRight, Droplets, Recycle, Leaf, Sparkles } from 'lucide-react';
 import { cn } from './lib/utils';
+import { Link } from 'react-router-dom';
 
 // --- Types ---
-interface Product {
+export interface Product {
   id: string;
   name: string;
   tagline: string;
@@ -39,7 +40,7 @@ const HERO_SLIDES = [
   }
 ];
 
-const PRODUCTS: Product[] = [
+export const PRODUCTS: Product[] = [
   {
     id: '1',
     name: "Midnight Fix",
@@ -98,7 +99,7 @@ const PRODUCTS: Product[] = [
 
 // --- Components ---
 
-const BackgroundEffects = () => (
+export const BackgroundEffects = () => (
   <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
     {/* Soft Animated Gradient */}
     <motion.div
@@ -156,7 +157,7 @@ const BackgroundEffects = () => (
   </div>
 );
 
-const Navbar = () => {
+export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -346,9 +347,9 @@ const TrendingProducts = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
           <div className="absolute bottom-12 left-12 text-white">
             <h3 className="text-4xl font-light tracking-[0.2em] uppercase mb-4">{activeTab}</h3>
-            <button className="flex items-center gap-3 text-[10px] tracking-[0.3em] uppercase font-semibold group/btn">
+            <Link to={`/category/${activeTab.toLowerCase()}`} className="flex items-center gap-3 text-[10px] tracking-[0.3em] uppercase font-semibold group/btn">
               See all products <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-2 transition-transform" />
-            </button>
+            </Link>
           </div>
           <div className="absolute inset-0 border border-white/0 group-hover:border-primary/30 transition-all duration-500 rounded-2xl" />
         </motion.div>
@@ -442,7 +443,7 @@ const ProductHighlight = () => (
   </section>
 );
 
-const Footer = () => (
+export const Footer = () => (
   <footer className="bg-white py-20 px-8 border-t border-zinc-100">
     <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
       <div className="col-span-1 md:col-span-1">
