@@ -334,25 +334,35 @@ const TrendingProducts = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         {/* Category Card */}
-        <motion.div
-          whileHover={{ y: -10 }}
-          className="lg:col-span-4 relative h-[600px] overflow-hidden group rounded-2xl cursor-pointer"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&q=80&w=800"
-            alt="Category"
-            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-            referrerPolicy="no-referrer"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-          <div className="absolute bottom-12 left-12 text-white">
-            <h3 className="text-4xl font-light tracking-[0.2em] uppercase mb-4">{activeTab}</h3>
-            <Link to={`/category/${activeTab.toLowerCase()}`} className="flex items-center gap-3 text-[10px] tracking-[0.3em] uppercase font-semibold group/btn">
-              See all products <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-2 transition-transform" />
-            </Link>
-          </div>
-          <div className="absolute inset-0 border border-white/0 group-hover:border-primary/30 transition-all duration-500 rounded-2xl" />
-        </motion.div>
+        <Link to={`/category/${activeTab.toLowerCase()}`} className="lg:col-span-4 block">
+          <motion.div
+            key={activeTab} // Enforce re-animation on tab switch
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            whileHover={{ y: -10 }}
+            className="relative h-[600px] overflow-hidden group rounded-2xl cursor-pointer"
+          >
+            <img
+              src={
+                activeTab === 'MEN' ? "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=800" :
+                  activeTab === 'WOMEN' ? "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&q=80&w=800" :
+                    "https://images.unsplash.com/photo-1590736704728-f4730bb30770?auto=format&fit=crop&q=80&w=800"
+              }
+              alt={activeTab}
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+            <div className="absolute bottom-12 left-12 text-white">
+              <h3 className="text-4xl font-light tracking-[0.2em] uppercase mb-4">{activeTab}</h3>
+              <div className="flex items-center gap-3 text-[10px] tracking-[0.3em] uppercase font-semibold group/btn">
+                See all products <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-2 transition-transform" />
+              </div>
+            </div>
+            <div className="absolute inset-0 border border-white/0 group-hover:border-primary/30 transition-all duration-500 rounded-2xl" />
+          </motion.div>
+        </Link>
 
         {/* Product Grid */}
         <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-8">
