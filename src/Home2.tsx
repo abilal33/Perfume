@@ -143,10 +143,10 @@ export default function Home2() {
         </div>
 
         <div className="hidden md:flex items-center gap-8 text-sm font-medium">
-          <a href="#" className="hover:text-secondary transition-colors">Collection</a>
+          <a href="/" className="hover:text-secondary transition-colors">Home</a>
           <a href="#" className="hover:text-secondary transition-colors">New Arrivals</a>
           <a href="#" className="hover:text-secondary transition-colors">Fragrance Finder</a>
-          <a href="#" className="hover:text-secondary transition-colors">About</a>
+          <a href="#" className="hover:text-secondary transition-colors">Collection</a>
         </div>
 
         <div className="flex items-center gap-4">
